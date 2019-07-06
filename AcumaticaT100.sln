@@ -6,11 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcumaticaT100", "AcumaticaT
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Site", "Site\", "{A879C4A6-2814-4C1C-A667-A329CF9ED654}"
 	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = 
-		SccAuxPath = 
-		SccLocalPath = 
-		SccProvider = 
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.1"
+		SccProjectName = ""
+		SccAuxPath = ""
+		SccLocalPath = ""
+		SccProvider = ""
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
 		ProjectReferences = "{09D3DF42-1028-4399-9E39-659018390717}|AcumaticaT100.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Site"
 		Debug.AspNetCompiler.PhysicalPath = "Site\"
