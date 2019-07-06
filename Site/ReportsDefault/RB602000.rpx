@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report Name="report1">
+  <Filters>
+    <FilterExp>
+      <Condition>IsNull</Condition>
+      <DataField>@SupplierCD</DataField>
+      <OpenBraces>1</OpenBraces>
+      <Operator>Or</Operator>
+    </FilterExp>
+    <FilterExp>
+      <CloseBraces>1</CloseBraces>
+      <DataField>Supplier.SupplierCD</DataField>
+      <Value>@SupplierCD</Value>
+    </FilterExp>
+    <FilterExp>
+      <CloseBraces>1</CloseBraces>
+      <DataField>ProductReorder.Active</DataField>
+      <OpenBraces>1</OpenBraces>
+      <Value>True</Value>
+    </FilterExp>
+    <FilterExp>
+      <CloseBraces>1</CloseBraces>
+      <Condition>Greater</Condition>
+      <DataField>ProductReorder.Discrepancy</DataField>
+      <OpenBraces>1</OpenBraces>
+      <Value>0</Value>
+    </FilterExp>
+  </Filters>
+  <Parameters>
+    <ReportParameter>
+      <Name>SupplierCD</Name>
+      <Nullable>True</Nullable>
+      <Prompt>Supplier</Prompt>
+      <ViewName>=[Supplier.SupplierCD]</ViewName>
+    </ReportParameter>
+  </Parameters>
+  <Relations>
+    <ReportRelation>
+      <ChildName>SupplierProduct</ChildName>
+      <JoinType>Inner</JoinType>
+      <Links>
+        <RelationRow>
+          <ChildField>ProductID</ChildField>
+          <ParentField>ProductID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>ProductReorder</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>Supplier</ChildName>
+      <JoinType>Inner</JoinType>
+      <Links>
+        <RelationRow>
+          <ChildField>SupplierID</ChildField>
+          <ParentField>SupplierID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SupplierProduct</ParentName>
+    </ReportRelation>
+  </Relations>
+  <SchemaUrl>http://localhost/RapidByte</SchemaUrl>
+  <Tables>
+    <ReportTable Name="Supplier">
+      <Fields>
+        <ReportField Name="Address"></ReportField>
+        <ReportField Name="City"></ReportField>
+        <ReportField Name="CompanyName"></ReportField>
+        <ReportField Name="ContactName"></ReportField>
+        <ReportField Name="CountryCD"></ReportField>
+        <ReportField Name="CountryCD_Country_description"></ReportField>
+        <ReportField Name="CountryCD_description"></ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="Fax"></ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="Phone"></ReportField>
+        <ReportField Name="PostalCode"></ReportField>
+        <ReportField Name="Region"></ReportField>
+        <ReportField Name="SupplierCD"></ReportField>
+        <ReportField Name="SupplierID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="TStamp"></ReportField>
+      </Fields>
+      <FullName>RB.RapidByte.Supplier</FullName>
+    </ReportTable>
+    <ReportTable Name="SupplierProduct">
+      <Fields>
+        <ReportField Name="ConversionFactor">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastPurchaseDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastSupplierPrice">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="MinOrderQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ProductID"></ReportField>
+        <ReportField Name="SupplierID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="SupplierPrice">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="SupplierUnit"></ReportField>
+        <ReportField Name="TStamp"></ReportField>
+      </Fields>
+      <FullName>RB.RapidByte.SupplierProduct</FullName>
+    </ReportTable>
+    <ReportTable Name="ProductReorder">
+      <Fields>
+        <ReportField Name="Active">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="AvailQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Discrepancy">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="MinAvailQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ProductCD"></ReportField>
+        <ReportField Name="ProductID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ProductName"></ReportField>
+        <ReportField Name="Selected">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="StockUnit"></ReportField>
+        <ReportField Name="SupplierID"></ReportField>
+        <ReportField Name="TStamp"></ReportField>
+        <ReportField Name="UnitPrice">
+          <DataType>Decimal</DataType>
+        </ReportField>
+      </Fields>
+      <FullName>RB.RapidByte.ProductReorder</FullName>
+    </ReportTable>
+  </Tables>
+  <Sections>
+    <PageHeader Name="pageHeaderSection1">
+      <Height>1.26984cm</Height>
+      <Items>
+        <Line Name="line1">
+          <Location>0px, 46px</Location>
+          <Size>696px, 8px</Size>
+        </Line>
+        <TextBox Name="textBox1">
+          <Location>0px, 0px</Location>
+          <Size>248px, 24px</Size>
+          <Style>
+            <Font>
+              <Size>16px</Size>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <Value>PRODUCT REPLENISHMENT</Value>
+        </TextBox>
+        <TextBox Name="textBox15">
+          <Location>248px, 24px</Location>
+          <Size>88px, 16px</Size>
+          <Value>SUPPLIER:</Value>
+          <VisibleExpr>=[@SupplierCD]&lt;&gt;Null</VisibleExpr>
+        </TextBox>
+        <TextBox Name="textBox17">
+          <Location>336px, 24px</Location>
+          <Size>208px, 16px</Size>
+          <Value>=[@SupplierCD]</Value>
+        </TextBox>
+        <TextBox Name="textBox18">
+          <Location>552px, 0px</Location>
+          <Size>48px, 24px</Size>
+          <Value>Page:</Value>
+        </TextBox>
+        <TextBox Name="textBox19">
+          <Location>600px, 0px</Location>
+          <Size>96px, 24px</Size>
+          <Value>=[PageOf]</Value>
+        </TextBox>
+        <TextBox Name="textBox20">
+          <Location>552px, 24px</Location>
+          <Size>48px, 16px</Size>
+          <Value>Date:</Value>
+        </TextBox>
+        <TextBox Name="textBox21">
+          <Location>600px, 24px</Location>
+          <Size>96px, 16px</Size>
+          <Value>=Today()</Value>
+        </TextBox>
+        <TextBox Name="textBox35">
+          <Location>0px, 24px</Location>
+          <Size>72px, 16px</Size>
+          <Style>
+            <Font>
+              <Size>12px</Size>
+            </Font>
+          </Style>
+          <Value>User:</Value>
+        </TextBox>
+        <TextBox Name="textBox36">
+          <Location>72px, 24px</Location>
+          <Size>176px, 16px</Size>
+          <Style>
+            <Font>
+              <Size>12px</Size>
+            </Font>
+          </Style>
+          <Value>=Report.GetDefUI('AccessInfo.Username')</Value>
+        </TextBox>
+      </Items>
+    </PageHeader>
+    <Detail Name="detailSection1">
+      <Height>0.63492cm</Height>
+      <Items>
+        <TextBox Name="textBox10">
+          <Location>264px, 0px</Location>
+          <Size>104px, 24px</Size>
+          <Value>=[SupplierProduct.SupplierUnit]</Value>
+        </TextBox>
+        <TextBox Name="textBox12">
+          <Location>584px, 0px</Location>
+          <Size>112px, 24px</Size>
+          <Value>=[SupplierProduct.SupplierPrice]</Value>
+        </TextBox>
+        <TextBox Name="textBox13">
+          <Location>368px, 0px</Location>
+          <Size>96px, 24px</Size>
+          <Value>=IIf(#010;[ProductReorder.Discrepancy]&gt;=0, [ProductReorder.Discrepancy],0)</Value>
+        </TextBox>
+        <TextBox Name="textBox26">
+          <Location>464px, 0px</Location>
+          <Size>120px, 24px</Size>
+          <Value>=[SupplierProduct.MinOrderQty]</Value>
+        </TextBox>
+        <TextBox Name="textBox9">
+          <Location>0px, 0px</Location>
+          <Size>264px, 24px</Size>
+          <Value>=[ProductReorder.ProductCD]</Value>
+        </TextBox>
+      </Items>
+    </Detail>
+    <PageFooter Name="pageFooterSection1">
+      <Expanded>False</Expanded>
+      <Height>0.21164cm</Height>
+    </PageFooter>
+  </Sections>
+  <Items />
+  <Groups>
+    <Group Name="Supplier">
+      <Grouping>
+        <GroupExp>
+          <DataField>Supplier.SupplierCD</DataField>
+        </GroupExp>
+      </Grouping>
+      <KeepTogether>WholeGroup</KeepTogether>
+      <PrintEmpty>False</PrintEmpty>
+      <Headers>
+        <Header Name="groupHeaderSection1">
+          <Height>2.75132cm</Height>
+          <Items>
+            <TextBox Name="textBox2">
+              <Location>0px, 0px</Location>
+              <Size>72px, 24px</Size>
+              <Value>Supplier:</Value>
+            </TextBox>
+            <TextBox Name="textBox25">
+              <Location>464px, 80px</Location>
+              <Size>120px, 24px</Size>
+              <Style>
+                <Font>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Min. Order Qty</Value>
+            </TextBox>
+            <TextBox Name="textBox27">
+              <Location>248px, 0px</Location>
+              <Size>80px, 24px</Size>
+              <Value>Contacts:</Value>
+            </TextBox>
+            <TextBox Name="textBox28">
+              <Location>328px, 0px</Location>
+              <Size>368px, 24px</Size>
+              <Value>=[Supplier.CompanyName]+' '+[Supplier.ContactName]</Value>
+            </TextBox>
+            <TextBox Name="textBox29">
+              <Location>248px, 24px</Location>
+              <Size>80px, 24px</Size>
+              <Value>Phone:</Value>
+            </TextBox>
+            <TextBox Name="textBox3">
+              <Location>72px, 0px</Location>
+              <Size>176px, 24px</Size>
+              <Value>=[Supplier.SupplierCD]</Value>
+            </TextBox>
+            <TextBox Name="textBox30">
+              <Location>328px, 24px</Location>
+              <Size>152px, 24px</Size>
+              <Value>=[Supplier.Phone]</Value>
+            </TextBox>
+            <TextBox Name="textBox31">
+              <Location>248px, 48px</Location>
+              <Size>80px, 24px</Size>
+              <Value>Country:</Value>
+            </TextBox>
+            <TextBox Name="textBox32">
+              <Location>328px, 48px</Location>
+              <Size>152px, 24px</Size>
+              <Value>=[Supplier.CountryCD]</Value>
+            </TextBox>
+            <TextBox Name="textBox4">
+              <Location>0px, 80px</Location>
+              <Size>264px, 24px</Size>
+              <Style>
+                <Font>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Conversion Factor/Product</Value>
+            </TextBox>
+            <TextBox Name="textBox5">
+              <Location>264px, 80px</Location>
+              <Size>104px, 24px</Size>
+              <Style>
+                <Font>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Supplier Unit</Value>
+            </TextBox>
+            <TextBox Name="textBox6">
+              <Location>584px, 80px</Location>
+              <Size>112px, 24px</Size>
+              <Style>
+                <Font>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Supplier Price</Value>
+            </TextBox>
+            <TextBox Name="textBox8">
+              <Location>368px, 80px</Location>
+              <Size>96px, 24px</Size>
+              <Style>
+                <Font>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Discrepancy</Value>
+            </TextBox>
+          </Items>
+        </Header>
+      </Headers>
+      <Footers>
+        <Footer Name="groupFooterSection1">
+          <Height>1.0582cm</Height>
+          <Items>
+            <Line Name="line2">
+              <Location>0px, 0px</Location>
+              <Size>696px, 8px</Size>
+            </Line>
+            <TextBox Name="textBox23">
+              <Location>400px, 8px</Location>
+              <Size>112px, 24px</Size>
+              <Value>Supplier total:</Value>
+            </TextBox>
+            <TextBox Name="textBox24">
+              <Format>=[ProductReorder.Discrepancy.Format]</Format>
+              <Location>512px, 8px</Location>
+              <Size>184px, 24px</Size>
+              <Style>
+                <Font>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Right</TextAlign>
+              </Style>
+              <Value>=Sum(IIf([ProductReorder.Discrepancy]&gt;=0, [ProductReorder.Discrepancy]*[SupplierProduct.SupplierPrice],[SupplierProduct.MinOrderQty]*[SupplierProduct.SupplierPrice]))</Value>
+            </TextBox>
+          </Items>
+        </Footer>
+      </Footers>
+    </Group>
+    <Group Name="ConversionFactor">
+      <Grouping>
+        <GroupExp>
+          <DataField>SupplierProduct.ConversionFactor</DataField>
+        </GroupExp>
+      </Grouping>
+      <KeepTogether>WholeGroup</KeepTogether>
+      <PrintEmpty>False</PrintEmpty>
+      <Headers>
+        <Header Name="groupHeaderSection2">
+          <Height>0.63492cm</Height>
+          <Items>
+            <TextBox Name="textBox22">
+              <Location>0px, 0px</Location>
+              <Size>696px, 24px</Size>
+              <Style>
+                <Font>
+                  <Style>Italic</Style>
+                </Font>
+              </Style>
+              <Value>=[SupplierProduct.ConversionFactor]</Value>
+            </TextBox>
+          </Items>
+        </Header>
+      </Headers>
+      <Footers>
+        <Footer Name="groupFooterSection2">
+          <Expanded>False</Expanded>
+          <Height>0.21164cm</Height>
+        </Footer>
+      </Footers>
+    </Group>
+  </Groups>
+</Report>

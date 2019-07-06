@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report Name="report1">
+  <Filters>
+    <FilterExp>
+      <DataField>SalesOrder.OrderNbr</DataField>
+      <Operator>Or</Operator>
+      <Value>@OrderNbr</Value>
+    </FilterExp>
+  </Filters>
+  <Parameters>
+    <ReportParameter>
+      <Name>OrderNbr</Name>
+      <Nullable>True</Nullable>
+      <Prompt>Order Number</Prompt>
+      <Required>True</Required>
+      <ViewName>=[SalesOrder.OrderNbr]</ViewName>
+    </ReportParameter>
+  </Parameters>
+  <Relations>
+    <ReportRelation>
+      <ChildName>OrderLine</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>OrderLine.OrderNbr</ChildField>
+          <ParentField>SalesOrder.OrderNbr</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SalesOrder</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>Product</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>Product.ProductID</ChildField>
+          <ParentField>OrderLine.ProductID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>OrderLine</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>Customer</ChildName>
+      <JoinType>Inner</JoinType>
+      <Links>
+        <RelationRow>
+          <ChildField>Customer.CustomerID</ChildField>
+          <ParentField>SalesOrder.CustomerID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SalesOrder</ParentName>
+    </ReportRelation>
+  </Relations>
+  <SchemaUrl>http://localhost/RapidByte</SchemaUrl>
+  <Tables>
+    <ReportTable Name="SalesOrder">
+      <Fields>
+        <ReportField Name="CustomerID"></ReportField>
+        <ReportField Name="Description"></ReportField>
+        <ReportField Name="Hold">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="LinesTotal">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="OrderDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="OrderNbr"></ReportField>
+        <ReportField Name="OrderTotal">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="RequiredDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="Selected">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="ShippedDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="Status"></ReportField>
+        <ReportField Name="TaxTotal">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Tstamp"></ReportField>
+      </Fields>
+      <FullName>RB.RapidByte.SalesOrder</FullName>
+    </ReportTable>
+    <ReportTable Name="OrderLine">
+      <Fields>
+        <ReportField Name="DiscPct">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="LinePrice">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="OrderNbr"></ReportField>
+        <ReportField Name="OrderQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ProductID"></ReportField>
+        <ReportField Name="StockUnit"></ReportField>
+        <ReportField Name="TaxAmt">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Tstamp"></ReportField>
+        <ReportField Name="UnitPrice">
+          <DataType>Decimal</DataType>
+        </ReportField>
+      </Fields>
+      <FullName>RB.RapidByte.OrderLine</FullName>
+    </ReportTable>
+    <ReportTable Name="Product">
+      <Fields>
+        <ReportField Name="Active">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="MinAvailQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ProductCD"></ReportField>
+        <ReportField Name="ProductID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ProductName"></ReportField>
+        <ReportField Name="StockUnit"></ReportField>
+        <ReportField Name="Tstamp"></ReportField>
+        <ReportField Name="UnitPrice">
+          <DataType>Decimal</DataType>
+        </ReportField>
+      </Fields>
+      <FullName>RB.RapidByte.Product</FullName>
+    </ReportTable>
+    <ReportTable Name="Customer">
+      <Fields>
+        <ReportField Name="Address"></ReportField>
+        <ReportField Name="City"></ReportField>
+        <ReportField Name="CompanyName"></ReportField>
+        <ReportField Name="ContactName"></ReportField>
+        <ReportField Name="CountryCD"></ReportField>
+        <ReportField Name="CountryCD_Country_description"></ReportField>
+        <ReportField Name="CountryCD_description"></ReportField>
+        <ReportField Name="CustomerCD"></ReportField>
+        <ReportField Name="CustomerID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="Fax"></ReportField>
+        <ReportField Name="Phone"></ReportField>
+        <ReportField Name="PostalCode"></ReportField>
+        <ReportField Name="Region"></ReportField>
+        <ReportField Name="Tstamp"></ReportField>
+      </Fields>
+      <FullName>RB.RapidByte.Customer</FullName>
+    </ReportTable>
+  </Tables>
+  <Sections>
+    <PageHeader Name="pageHeaderSection1">
+      <Height>0.84656cm</Height>
+      <Items>
+        <Line Name="line1">
+          <Location>0px, 24px</Location>
+          <Size>696px, 8px</Size>
+        </Line>
+        <TextBox Name="textBox1">
+          <Location>552px, 0px</Location>
+          <Size>144px, 24px</Size>
+          <Style>
+            <Font>
+              <Size>16px</Size>
+              <Style>Bold</Style>
+            </Font>
+          </Style>
+          <Value>Delivery Note</Value>
+        </TextBox>
+      </Items>
+    </PageHeader>
+    <Detail Name="detailSection1">
+      <Height>0.84656cm</Height>
+      <Variables>
+        <ReportVariable>
+          <Name>RowNumber</Name>
+          <ProcessOrder>Always</ProcessOrder>
+          <ResetGroup>OrderNbr</ResetGroup>
+        </ReportVariable>
+      </Variables>
+      <Items>
+        <TextBox Name="textBox23">
+          <Location>0px, 0px</Location>
+          <Size>32px, 24px</Size>
+          <Value>=Assign('$RowNumber',$RowNumber+1)</Value>
+        </TextBox>
+        <TextBox Name="textBox24">
+          <Location>32px, 0px</Location>
+          <Size>176px, 24px</Size>
+          <Value>=[Product.ProductName]</Value>
+        </TextBox>
+        <TextBox Name="textBox25">
+          <Location>208px, 0px</Location>
+          <Size>96px, 24px</Size>
+          <Value>=[OrderLine.StockUnit]</Value>
+        </TextBox>
+        <TextBox Name="textBox26">
+          <Location>304px, 0px</Location>
+          <Size>72px, 24px</Size>
+          <Value>=[OrderLine.OrderQty]</Value>
+        </TextBox>
+        <TextBox Name="textBox27">
+          <Location>376px, 0px</Location>
+          <Size>104px, 24px</Size>
+          <Value>=[OrderLine.UnitPrice]</Value>
+        </TextBox>
+        <TextBox Name="textBox28">
+          <Location>480px, 0px</Location>
+          <Size>88px, 24px</Size>
+          <Value>=[OrderLine.DiscPct]</Value>
+        </TextBox>
+        <TextBox Name="textBox29">
+          <Location>568px, 0px</Location>
+          <Size>128px, 24px</Size>
+          <Value>=[OrderLine.LinePrice]</Value>
+        </TextBox>
+      </Items>
+    </Detail>
+    <PageFooter Name="pageFooterSection1">
+      <Expanded>False</Expanded>
+      <Height>0.21164cm</Height>
+    </PageFooter>
+  </Sections>
+  <Items />
+  <Groups>
+    <Group Name="OrderNbr">
+      <Grouping>
+        <GroupExp>
+          <DataField>SalesOrder.OrderNbr</DataField>
+        </GroupExp>
+      </Grouping>
+      <KeepTogether>WholeGroup</KeepTogether>
+      <PrintEmpty>False</PrintEmpty>
+      <Headers>
+        <Header Name="groupHeaderSection1">
+          <Height>4.65608cm</Height>
+          <PrintOnEveryPage>True</PrintOnEveryPage>
+          <Items>
+            <Line Name="line3">
+              <Location>0px, 136px</Location>
+              <Size>696px, 8px</Size>
+            </Line>
+            <Line Name="line5">
+              <Direction>Vertical</Direction>
+              <Location>392px, 0px</Location>
+              <Size>8px, 128px</Size>
+            </Line>
+            <TextBox Name="textBox11">
+              <Location>528px, 0px</Location>
+              <Size>160px, 24px</Size>
+              <Value>=[SalesOrder.OrderNbr]</Value>
+            </TextBox>
+            <TextBox Name="textBox12">
+              <Location>528px, 24px</Location>
+              <Size>160px, 24px</Size>
+              <Value>=[Customer.CustomerCD]</Value>
+            </TextBox>
+            <TextBox Name="textBox13">
+              <Location>528px, 48px</Location>
+              <Size>160px, 24px</Size>
+              <Value>=[SalesOrder.OrderDate]</Value>
+            </TextBox>
+            <TextBox Name="textBox14">
+              <Location>528px, 72px</Location>
+              <Size>160px, 24px</Size>
+              <Value>=[SalesOrder.ShippedDate]</Value>
+            </TextBox>
+            <TextBox Name="textBox16">
+              <Location>0px, 152px</Location>
+              <Size>32px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>No.</Value>
+            </TextBox>
+            <TextBox Name="textBox17">
+              <Location>32px, 152px</Location>
+              <Size>176px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Product Item</Value>
+            </TextBox>
+            <TextBox Name="textBox18">
+              <Location>208px, 152px</Location>
+              <Size>96px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Stock Unit</Value>
+            </TextBox>
+            <TextBox Name="textBox19">
+              <Location>304px, 152px</Location>
+              <Size>72px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Quantity</Value>
+            </TextBox>
+            <TextBox Name="textBox2">
+              <Location>8px, 0px</Location>
+              <Size>40px, 24px</Size>
+              <Value>To:</Value>
+            </TextBox>
+            <TextBox Name="textBox20">
+              <Location>376px, 152px</Location>
+              <Size>104px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Unit Price</Value>
+            </TextBox>
+            <TextBox Name="textBox21">
+              <Location>480px, 152px</Location>
+              <Size>88px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Discount</Value>
+            </TextBox>
+            <TextBox Name="textBox22">
+              <Location>568px, 152px</Location>
+              <Size>128px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+              </Style>
+              <Value>Extended Price</Value>
+            </TextBox>
+            <TextBox Name="textBox3">
+              <Location>48px, 0px</Location>
+              <Size>320px, 104px</Size>
+              <Value>=IsNull([Customer.CompanyName],'') +#010;IsNull('{br} '+[Customer.Address],'') +#010;ISNull('{br} '+[Customer.City],'') +#010;IsNull('{br} '+[Customer.CountryCD],'') +#010;IsNull('{br} '+[Customer.Region],'') +#010;IsNull('{br} '+[Customer.PostalCode],'')#010;#010;</Value>
+            </TextBox>
+            <TextBox Name="textBox39">
+              <Location>408px, 96px</Location>
+              <Size>120px, 24px</Size>
+              <Value>Status:</Value>
+            </TextBox>
+            <TextBox Name="textBox4">
+              <Location>8px, 104px</Location>
+              <Size>40px, 24px</Size>
+              <Value>Attn:</Value>
+            </TextBox>
+            <TextBox Name="textBox40">
+              <Location>528px, 96px</Location>
+              <Size>160px, 24px</Size>
+              <Value>=[SalesOrder.Status]</Value>
+            </TextBox>
+            <TextBox Name="textBox5">
+              <Location>48px, 104px</Location>
+              <Size>320px, 24px</Size>
+              <Value>=[Customer.ContactName]</Value>
+            </TextBox>
+            <TextBox Name="textBox6">
+              <Location>408px, 0px</Location>
+              <Size>120px, 24px</Size>
+              <Value>Order ID:</Value>
+            </TextBox>
+            <TextBox Name="textBox7">
+              <Location>408px, 24px</Location>
+              <Size>120px, 24px</Size>
+              <Value>Customer ID:</Value>
+            </TextBox>
+            <TextBox Name="textBox8">
+              <Location>408px, 48px</Location>
+              <Size>120px, 24px</Size>
+              <Value>Order Date:</Value>
+            </TextBox>
+            <TextBox Name="textBox9">
+              <Location>408px, 72px</Location>
+              <Size>120px, 24px</Size>
+              <Value>Shipment Date:</Value>
+            </TextBox>
+          </Items>
+        </Header>
+      </Headers>
+      <Footers>
+        <Footer Name="groupFooterSection1">
+          <Height>3.38624cm</Height>
+          <PrintAtBottom>True</PrintAtBottom>
+          <PrintOnEveryPage>True</PrintOnEveryPage>
+          <ProcessOrder>Always</ProcessOrder>
+          <ResetPageNumber>True</ResetPageNumber>
+          <Items>
+            <Line Name="line2">
+              <Location>0px, 0px</Location>
+              <Size>696px, 8px</Size>
+            </Line>
+            <Line Name="line4">
+              <Location>0px, 88px</Location>
+              <Size>696px, 8px</Size>
+            </Line>
+            <TextBox Name="textBox30">
+              <Location>120px, 32px</Location>
+              <ProcessOrder>WhilePrint</ProcessOrder>
+              <Size>200px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>16px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Center</TextAlign>
+              </Style>
+              <Value>***Continued***</Value>
+              <VisibleExpr>=([PageIndex]&lt;[PageCount])</VisibleExpr>
+            </TextBox>
+            <TextBox Name="textBox31">
+              <Location>440px, 8px</Location>
+              <ProcessOrder>WhilePrint</ProcessOrder>
+              <Size>120px, 24px</Size>
+              <Value>Lines Total:</Value>
+              <VisibleExpr>=([PageIndex]=[PageCount])</VisibleExpr>
+            </TextBox>
+            <TextBox Name="textBox32">
+              <Location>560px, 8px</Location>
+              <ProcessOrder>WhilePrint</ProcessOrder>
+              <Size>128px, 24px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+              <Value>=[SalesOrder.LinesTotal]</Value>
+              <VisibleExpr>=([PageIndex]=[PageCount])</VisibleExpr>
+            </TextBox>
+            <TextBox Name="textBox33">
+              <Location>440px, 32px</Location>
+              <ProcessOrder>WhilePrint</ProcessOrder>
+              <Size>120px, 24px</Size>
+              <Value>Tax Total:</Value>
+              <VisibleExpr>=([PageIndex]=[PageCount])</VisibleExpr>
+            </TextBox>
+            <TextBox Name="textBox34">
+              <Location>560px, 32px</Location>
+              <ProcessOrder>WhilePrint</ProcessOrder>
+              <Size>128px, 24px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+              <Value>=[SalesOrder.TaxTotal]</Value>
+              <VisibleExpr>=([PageIndex]=[PageCount])</VisibleExpr>
+            </TextBox>
+            <TextBox Name="textBox35">
+              <Location>440px, 56px</Location>
+              <ProcessOrder>WhilePrint</ProcessOrder>
+              <Size>120px, 24px</Size>
+              <Value>Order Total:</Value>
+              <VisibleExpr>=([PageIndex]=[PageCount])</VisibleExpr>
+            </TextBox>
+            <TextBox Name="textBox36">
+              <Location>560px, 56px</Location>
+              <ProcessOrder>WhilePrint</ProcessOrder>
+              <Size>128px, 24px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+              <Value>=[SalesOrder.OrderTotal]</Value>
+              <VisibleExpr>=([PageIndex]=[PageCount])</VisibleExpr>
+            </TextBox>
+            <TextBox Name="textBox37">
+              <Location>560px, 96px</Location>
+              <Size>128px, 24px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+              <Value>='Page '+[PageOf]</Value>
+            </TextBox>
+          </Items>
+        </Footer>
+      </Footers>
+    </Group>
+  </Groups>
+</Report>
